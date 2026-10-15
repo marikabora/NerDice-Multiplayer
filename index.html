@@ -59,6 +59,12 @@
       }
     }
 
+    .tray-theme-btn.active-tray {
+      border-color: #f59e0b;
+      background: rgba(245, 158, 11, 0.2);
+      box-shadow: 0 0 14px rgba(245, 158, 11, 0.35);
+    }
+
     .player-pill-active {
       background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(244, 63, 94, 0.25) 100%);
       border: 2px solid #f59e0b;
@@ -327,6 +333,74 @@
         </div>
       </div>
 
+      <!-- SELEZIONE TAVOLO / AMBIENTAZIONE (D&D, MEDIEVALE, FANTASY, STEAMPUNK) -->
+      <div class="mb-6 bg-slate-900/80 rounded-2xl p-4 sm:p-5 border border-slate-800">
+        <div class="flex items-center justify-between mb-3">
+          <label class="font-medium text-slate-200 flex items-center gap-2 text-sm sm:text-base">
+            <i class="fa-solid fa-dungeon text-amber-500"></i> Tavolo di Gioco 3D (Ambientazione GdR)
+          </label>
+          <span id="activeTrayLabel" class="text-xs font-semibold px-2.5 py-1 rounded-lg bg-amber-500/20 text-amber-300 border border-amber-500/30">
+            Taverna D&D (Legno)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
+          <!-- Casuale / Rotazione sempre diversa -->
+          <button type="button" onclick="selectTrayStyle('random')" class="tray-theme-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 text-center flex flex-col items-center gap-1.5 transition" data-tray="random">
+            <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-amber-500 via-purple-600 to-cyan-500 flex items-center justify-center text-white text-sm shadow">
+              <i class="fa-solid fa-shuffle"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white">Sempre Diverso</span>
+            <span class="text-[9px] text-slate-400 -mt-1">Casuale</span>
+          </button>
+
+          <!-- Taverna D&D (Legno di quercia) -->
+          <button type="button" onclick="selectTrayStyle('wood')" class="tray-theme-btn active-tray p-2.5 rounded-xl border-2 border-amber-400 bg-amber-500/20 text-center flex flex-col items-center gap-1.5 transition" data-tray="wood">
+            <div class="w-8 h-8 rounded-lg bg-amber-900 border border-amber-700 flex items-center justify-center text-amber-200 text-sm shadow">
+              <i class="fa-solid fa-beer-mug-empty"></i>
+            </div>
+            <span class="text-[11px] font-bold text-white">Taverna D&D</span>
+            <span class="text-[9px] text-amber-300/80 -mt-1">Legno Antico</span>
+          </button>
+
+          <!-- Medievale Dungeon (Pietra runica) -->
+          <button type="button" onclick="selectTrayStyle('dungeon')" class="tray-theme-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:border-slate-500 text-center flex flex-col items-center gap-1.5 transition" data-tray="dungeon">
+            <div class="w-8 h-8 rounded-lg bg-stone-700 border border-stone-500 flex items-center justify-center text-stone-200 text-sm shadow">
+              <i class="fa-solid fa-skull"></i>
+            </div>
+            <span class="text-[11px] font-bold text-slate-300">Cripta D&D</span>
+            <span class="text-[9px] text-slate-400 -mt-1">Pietra & Rupi</span>
+          </button>
+
+          <!-- Altare Arcano Fantasy -->
+          <button type="button" onclick="selectTrayStyle('arcane')" class="tray-theme-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:border-purple-500 text-center flex flex-col items-center gap-1.5 transition" data-tray="arcane">
+            <div class="w-8 h-8 rounded-lg bg-indigo-950 border border-purple-500 flex items-center justify-center text-purple-300 text-sm shadow">
+              <i class="fa-solid fa-hat-wizard"></i>
+            </div>
+            <span class="text-[11px] font-bold text-slate-300">Altare Magico</span>
+            <span class="text-[9px] text-purple-300/80 -mt-1">Rune Arcane</span>
+          </button>
+
+          <!-- Steampunk Fonderia -->
+          <button type="button" onclick="selectTrayStyle('steampunk')" class="tray-theme-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:border-amber-600 text-center flex flex-col items-center gap-1.5 transition" data-tray="steampunk">
+            <div class="w-8 h-8 rounded-lg bg-orange-950 border border-orange-600 flex items-center justify-center text-amber-400 text-sm shadow">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <span class="text-[11px] font-bold text-slate-300">Steampunk</span>
+            <span class="text-[9px] text-amber-500/80 -mt-1">Ottone & Rivetti</span>
+          </button>
+
+          <!-- Feltro Classico -->
+          <button type="button" onclick="selectTrayStyle('felt')" class="tray-theme-btn p-2.5 rounded-xl border border-slate-700 bg-slate-800 hover:border-emerald-500 text-center flex flex-col items-center gap-1.5 transition" data-tray="felt">
+            <div class="w-8 h-8 rounded-lg bg-emerald-950 border border-emerald-600 flex items-center justify-center text-emerald-300 text-sm shadow">
+              <i class="fa-solid fa-dice-d6"></i>
+            </div>
+            <span class="text-[11px] font-bold text-slate-300">Feltro Verde</span>
+            <span class="text-[9px] text-emerald-400/80 -mt-1">Tradizionale</span>
+          </button>
+        </div>
+      </div>
+
       <button type="button" onclick="triggerRollSequence()" class="w-full py-4 rounded-2xl bg-gradient-to-r from-amber-500 via-rose-500 to-indigo-600 hover:from-amber-400 hover:via-rose-400 hover:to-indigo-500 active:scale-[0.98] transition shadow-xl shadow-rose-500/25 flex items-center justify-center gap-3 font-fun font-bold text-xl text-white">
         <i class="fa-solid fa-dice-d20 text-2xl"></i>
         LANCIA NEL VASSOIO 3D
@@ -367,9 +441,18 @@
             <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
             I dadi stanno rotolando nel vassoio...
           </div>
-          <span class="text-slate-400 font-mono hidden sm:inline">
-            <i class="fa-solid fa-hand-pointer text-amber-400 mr-1"></i> Ruota la visuale col mouse/touch
-          </span>
+          
+          <div class="flex items-center gap-2">
+            <!-- Cambio Rapido Tavolo al Volo -->
+            <button onclick="cycleTrayThemeQuickly()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 border border-slate-700 font-semibold flex items-center gap-1.5 transition" title="Cambia stile tavolo">
+              <i class="fa-solid fa-dungeon text-xs"></i>
+              <span id="quickTrayName" class="hidden sm:inline">Taverna D&D</span>
+              <i class="fa-solid fa-shuffle text-[10px] text-slate-400"></i>
+            </button>
+            <span class="text-slate-400 font-mono hidden sm:inline">
+              <i class="fa-solid fa-hand-pointer text-amber-400 mr-1"></i> Ruota visuale
+            </span>
+          </div>
         </div>
 
         <div id="diceCanvasContainer">
@@ -604,7 +687,9 @@
       isRolling: false,
       currentSkin: 'classic',
       customSkinImage: null,
-      customThreeTexture: null
+      customThreeTexture: null,
+      trayStyle: 'wood', // 'wood' | 'dungeon' | 'arcane' | 'steampunk' | 'felt' | 'random'
+      activeRenderedTrayStyle: 'wood'
     };
 
     /* Generatore Crittografico Equiprobabile CSPRNG */
@@ -970,6 +1055,359 @@
     }
 
     /* =================================================================
+       GESTIONE TEMI DEL VASSOIO 3D (D&D, FANTASY, MEDIEVALE, STEAMPUNK)
+       ================================================================= */
+    const TRAY_STYLES = ['wood', 'dungeon', 'arcane', 'steampunk', 'felt'];
+    const TRAY_LABELS = {
+      wood: 'Taverna D&D (Legno)',
+      dungeon: 'Cripta D&D (Pietra)',
+      arcane: 'Altare Magico (Fantasy)',
+      steampunk: 'Fonderia (Steampunk)',
+      felt: 'Feltro Verde (Casinò)',
+      random: 'Sempre Diverso (Casuale)'
+    };
+
+    function selectTrayStyle(style) {
+      playFX('click');
+      appState.trayStyle = style;
+
+      document.querySelectorAll('.tray-theme-btn').forEach(b => {
+        b.classList.remove('active-tray', 'border-2', 'border-amber-400', 'bg-amber-500/20');
+        b.classList.add('border-slate-700', 'bg-slate-800');
+        const span = b.querySelector('span.font-bold');
+        if (span) {
+          span.classList.remove('text-white');
+          span.classList.add('text-slate-300');
+        }
+      });
+
+      const activeBtn = document.querySelector(`.tray-theme-btn[data-tray="${style}"]`);
+      if (activeBtn) {
+        activeBtn.classList.remove('border-slate-700', 'bg-slate-800');
+        activeBtn.classList.add('active-tray', 'border-2', 'border-amber-400', 'bg-amber-500/20');
+        const span = activeBtn.querySelector('span.font-bold');
+        if (span) {
+          span.classList.remove('text-slate-300');
+          span.classList.add('text-white');
+        }
+      }
+
+      const label = document.getElementById('activeTrayLabel');
+      if (label) label.textContent = TRAY_LABELS[style] || 'Taverna D&D';
+
+      if (style !== 'random') {
+        applyTrayTheme(style);
+      }
+    }
+
+    function cycleTrayThemeQuickly() {
+      playFX('click');
+      const cur = appState.activeRenderedTrayStyle;
+      const idx = TRAY_STYLES.indexOf(cur);
+      const nextStyle = TRAY_STYLES[(idx + 1) % TRAY_STYLES.length];
+      applyTrayTheme(nextStyle);
+    }
+
+    /* Generazione Texture Procedurali per il Tavolo 3D */
+    function createProceduralTrayFloorTexture(theme) {
+      const canvas = document.createElement('canvas');
+      canvas.width = 1024;
+      canvas.height = 1024;
+      const ctx = canvas.getContext('2d');
+
+      if (theme === 'wood') {
+        // Asse di taverna D&D in quercia antica solcata
+        ctx.fillStyle = '#2c180b';
+        ctx.fillRect(0, 0, 1024, 1024);
+
+        const plankCount = 6;
+        const plankH = 1024 / plankCount;
+        for (let p = 0; p < plankCount; p++) {
+          const y = p * plankH;
+          const shade = ((p % 2 === 0) ? 12 : -12);
+          ctx.fillStyle = `rgb(${44 + shade}, ${24 + Math.floor(shade * 0.6)}, ${11 + Math.floor(shade * 0.3)})`;
+          ctx.fillRect(0, y, 1024, plankH);
+
+          // Fessura tra le tavole
+          ctx.fillStyle = '#0f0703';
+          ctx.fillRect(0, y, 1024, 6);
+
+          // Venature del legno
+          ctx.strokeStyle = 'rgba(15, 7, 3, 0.45)';
+          ctx.lineWidth = 2.5;
+          for (let v = 0; v < 14; v++) {
+            ctx.beginPath();
+            const startY = y + 10 + Math.random() * (plankH - 20);
+            ctx.moveTo(0, startY);
+            ctx.bezierCurveTo(340, startY + (Math.random() - 0.5) * 40, 680, startY + (Math.random() - 0.5) * 40, 1024, startY + (Math.random() - 0.5) * 40);
+            ctx.stroke();
+          }
+
+          // Nodi nel legno
+          if (p % 2 === 0) {
+            const knotX = 220 + p * 110;
+            const knotY = y + plankH / 2;
+            ctx.fillStyle = '#160a04';
+            ctx.beginPath();
+            ctx.ellipse(knotX, knotY, 32, 16, Math.PI / 12, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.strokeStyle = 'rgba(74, 40, 18, 0.6)';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+          }
+        }
+      } else if (theme === 'dungeon') {
+        // Lastre di pietra da dungeon medievale con rune scolpite
+        ctx.fillStyle = '#1e2124';
+        ctx.fillRect(0, 0, 1024, 1024);
+
+        // Disegno lastroni di pietra spezzati
+        const rows = 4;
+        const cols = 4;
+        const rH = 1024 / rows;
+        const cW = 1024 / cols;
+
+        for (let r = 0; r < rows; r++) {
+          for (let c = 0; c < cols; c++) {
+            const x = c * cW;
+            const y = r * rH;
+            const jitter = ((r + c) % 2 === 0 ? 10 : -10);
+            ctx.fillStyle = `rgb(${35 + jitter}, ${38 + jitter}, ${42 + jitter})`;
+            ctx.fillRect(x + 4, y + 4, cW - 8, rH - 8);
+
+            // Graffi e crepe da battaglia
+            ctx.strokeStyle = '#0d0e10';
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.moveTo(x + 20, y + 20);
+            ctx.lineTo(x + cW / 2 + (Math.random() - 0.5) * 30, y + rH / 2);
+            ctx.lineTo(x + cW - 25, y + rH - 30);
+            ctx.stroke();
+          }
+        }
+
+        // Fuga tra i blocchi
+        ctx.strokeStyle = '#090a0c';
+        ctx.lineWidth = 8;
+        for (let r = 0; r <= rows; r++) {
+          ctx.beginPath();
+          ctx.moveTo(0, r * rH);
+          ctx.lineTo(1024, r * rH);
+          ctx.stroke();
+        }
+        for (let c = 0; c <= cols; c++) {
+          ctx.beginPath();
+          ctx.moveTo(c * cW, 0);
+          ctx.lineTo(c * cW, 1024);
+          ctx.stroke();
+        }
+
+        // Timbro del drago centrale scolpito
+        ctx.strokeStyle = 'rgba(245, 158, 11, 0.28)';
+        ctx.lineWidth = 6;
+        ctx.beginPath();
+        ctx.arc(512, 512, 280, 0, Math.PI * 2);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(512, 512, 240, 0, Math.PI * 2);
+        ctx.stroke();
+
+      } else if (theme === 'arcane') {
+        // Altare Arcano Fantasy con cerchio di invocazione runico luminescente
+        const bgGrad = ctx.createRadialGradient(512, 512, 50, 512, 512, 600);
+        bgGrad.addColorStop(0, '#1a0b2e');
+        bgGrad.addColorStop(0.5, '#0d0618');
+        bgGrad.addColorStop(1, '#05020a');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, 1024, 1024);
+
+        // Cerchi concentrici arcani
+        ctx.strokeStyle = '#a855f7';
+        ctx.lineWidth = 5;
+        ctx.beginPath();
+        ctx.arc(512, 512, 380, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = '#06b6d4';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.arc(512, 512, 340, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(512, 512, 180, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Stella a 8 punte / sigillo mistico
+        ctx.strokeStyle = 'rgba(217, 70, 239, 0.7)';
+        ctx.lineWidth = 4;
+        for (let i = 0; i < 8; i++) {
+          const a1 = (i * Math.PI * 2) / 8;
+          const a2 = ((i + 3) * Math.PI * 2) / 8;
+          ctx.beginPath();
+          ctx.moveTo(512 + Math.cos(a1) * 340, 512 + Math.sin(a1) * 340);
+          ctx.lineTo(512 + Math.cos(a2) * 340, 512 + Math.sin(a2) * 340);
+          ctx.stroke();
+        }
+
+        // Rune e glifi agli angoli
+        for (let i = 0; i < 16; i++) {
+          const ang = (i * Math.PI * 2) / 16;
+          const rx = 512 + Math.cos(ang) * 260;
+          const ry = 512 + Math.sin(ang) * 260;
+          ctx.fillStyle = i % 2 === 0 ? '#38bdf8' : '#e879f9';
+          ctx.beginPath();
+          ctx.arc(rx, ry, 6, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+      } else if (theme === 'steampunk') {
+        // Piastre metalliche in ottone/rame con rivetti e ingranaggi a vista
+        ctx.fillStyle = '#3a2012';
+        ctx.fillRect(0, 0, 1024, 1024);
+
+        // 4 Grandi piastre di ottone rivettate
+        const pHalf = 512;
+        const plates = [
+          { x: 10, y: 10, w: pHalf - 20, h: pHalf - 20, c: '#5c3619' },
+          { x: pHalf + 10, y: 10, w: pHalf - 20, h: pHalf - 20, c: '#6b3f1d' },
+          { x: 10, y: pHalf + 10, w: pHalf - 20, h: pHalf - 20, c: '#6b3f1d' },
+          { x: pHalf + 10, y: pHalf + 10, w: pHalf - 20, h: pHalf - 20, c: '#5c3619' }
+        ];
+
+        plates.forEach(p => {
+          ctx.fillStyle = p.c;
+          ctx.fillRect(p.x, p.y, p.w, p.h);
+          ctx.strokeStyle = '#b45309';
+          ctx.lineWidth = 4;
+          ctx.strokeRect(p.x, p.y, p.w, p.h);
+
+          // Rivetti lungo i bordi
+          ctx.fillStyle = '#f59e0b';
+          for (let rx = p.x + 20; rx < p.x + p.w; rx += 50) {
+            ctx.beginPath();
+            ctx.arc(rx, p.y + 16, 5, 0, Math.PI * 2);
+            ctx.arc(rx, p.y + p.h - 16, 5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          for (let ry = p.y + 20; ry < p.y + p.h; ry += 50) {
+            ctx.beginPath();
+            ctx.arc(p.x + 16, ry, 5, 0, Math.PI * 2);
+            ctx.arc(p.x + p.w - 16, ry, 5, 0, Math.PI * 2);
+            ctx.fill();
+          }
+        });
+
+        // Grande ingranaggio centrale in bronzo
+        ctx.save();
+        ctx.translate(512, 512);
+        ctx.fillStyle = '#b45309';
+        ctx.strokeStyle = '#fef08a';
+        ctx.lineWidth = 4;
+        const teeth = 14;
+        const outerR = 190;
+        const innerR = 150;
+        ctx.beginPath();
+        for (let i = 0; i < teeth; i++) {
+          const a1 = (i * Math.PI * 2) / teeth;
+          const a2 = ((i + 0.5) * Math.PI * 2) / teeth;
+          const a3 = ((i + 1) * Math.PI * 2) / teeth;
+          ctx.lineTo(Math.cos(a1) * outerR, Math.sin(a1) * outerR);
+          ctx.lineTo(Math.cos(a2) * outerR, Math.sin(a2) * outerR);
+          ctx.lineTo(Math.cos(a2) * innerR, Math.sin(a2) * innerR);
+          ctx.lineTo(Math.cos(a3) * innerR, Math.sin(a3) * innerR);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#1c1007';
+        ctx.beginPath();
+        ctx.arc(0, 0, 70, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+      } else {
+        // Feltro verde classico
+        ctx.fillStyle = '#0f422e';
+        ctx.fillRect(0, 0, 1024, 1024);
+        for (let i = 0; i < 4000; i++) {
+          ctx.fillStyle = Math.random() > 0.5 ? 'rgba(20, 95, 65, 0.4)' : 'rgba(8, 42, 28, 0.4)';
+          ctx.fillRect(Math.random() * 1024, Math.random() * 1024, 2, 2);
+        }
+      }
+
+      const tex = new THREE.CanvasTexture(canvas);
+      tex.wrapS = THREE.RepeatWrapping;
+      tex.wrapT = THREE.RepeatWrapping;
+      return tex;
+    }
+
+    /* Aggiornamento Dinamico del Vassoio 3D */
+    function applyTrayTheme(theme) {
+      if (!scene || !trayFloorMesh || !trayWalls) return;
+
+      appState.activeRenderedTrayStyle = theme;
+      const quickBadge = document.getElementById('quickTrayName');
+      if (quickBadge) quickBadge.textContent = TRAY_LABELS[theme]?.replace(/\s*\(.*\)/, '') || 'Taverna';
+
+      const floorTex = createProceduralTrayFloorTexture(theme);
+
+      let floorRough = 0.6;
+      let floorMetal = 0.1;
+      let wallColor = 0x381f13;
+      let wallRough = 0.5;
+      let wallMetal = 0.1;
+
+      if (theme === 'wood') {
+        floorRough = 0.72;
+        floorMetal = 0.05;
+        wallColor = 0x241208; // Legno di rovere scuro con venature
+        if (mainSpotLight) mainSpotLight.color.setHex(0xffecc7); // Luce calda da taverna/torce
+        if (trayRimLight) trayRimLight.color.setHex(0xf59e0b);
+      } else if (theme === 'dungeon') {
+        floorRough = 0.88;
+        floorMetal = 0.15;
+        wallColor = 0x1f2327; // Ferro battuto e pietra grigia
+        wallMetal = 0.45;
+        if (mainSpotLight) mainSpotLight.color.setHex(0xe2e8f0); // Luce fredda lunare da cripta
+        if (trayRimLight) trayRimLight.color.setHex(0x38bdf8);
+      } else if (theme === 'arcane') {
+        floorRough = 0.35;
+        floorMetal = 0.3;
+        wallColor = 0x18092e; // Ossidiana incisa di viola
+        wallMetal = 0.6;
+        if (mainSpotLight) mainSpotLight.color.setHex(0xf3e8ff); // Luce mistica ciano/viola
+        if (trayRimLight) trayRimLight.color.setHex(0xa855f7);
+      } else if (theme === 'steampunk') {
+        floorRough = 0.38;
+        floorMetal = 0.75;
+        wallColor = 0x663300; // Bronzo e ottone battuto
+        wallMetal = 0.8;
+        if (mainSpotLight) mainSpotLight.color.setHex(0xffdfba); // Luce calda ad olio / gas
+        if (trayRimLight) trayRimLight.color.setHex(0xf97316);
+      } else {
+        floorRough = 0.9;
+        floorMetal = 0.05;
+        wallColor = 0x381f13;
+        if (mainSpotLight) mainSpotLight.color.setHex(0xfff5e6);
+        if (trayRimLight) trayRimLight.color.setHex(0x6366f1);
+      }
+
+      trayFloorMesh.material.map = floorTex;
+      trayFloorMesh.material.roughness = floorRough;
+      trayFloorMesh.material.metalness = floorMetal;
+      trayFloorMesh.material.needsUpdate = true;
+
+      trayWalls.forEach(w => {
+        w.material.color.setHex(wallColor);
+        w.material.roughness = wallRough;
+        w.material.metalness = wallMetal;
+        w.material.needsUpdate = true;
+      });
+    }
+
+    /* =================================================================
        MOTORE 3D THREE.JS (Geometrie Esatte, Luci, Vassoio Feltro)
        ================================================================= */
     let scene, camera, renderer;
@@ -978,6 +1416,11 @@
     let mouseLast = { x: 0, y: 0 };
     let cameraAngle = { theta: 0, phi: 0.9 };
     const cameraRadius = 16.5;
+
+    let trayFloorMesh = null;
+    let trayWalls = [];
+    let mainSpotLight = null;
+    let trayRimLight = null;
 
     function initThreeScene() {
       const container = document.getElementById('diceCanvasContainer');
@@ -1004,34 +1447,36 @@
       const ambient = new THREE.AmbientLight(0xffffff, 0.85);
       scene.add(ambient);
 
-      const mainSpot = new THREE.DirectionalLight(0xfff5e6, 1.35);
-      mainSpot.position.set(10, 22, 12);
-      mainSpot.castShadow = true;
-      mainSpot.shadow.mapSize.width = 1024;
-      mainSpot.shadow.mapSize.height = 1024;
-      scene.add(mainSpot);
+      mainSpotLight = new THREE.DirectionalLight(0xfff5e6, 1.35);
+      mainSpotLight.position.set(10, 22, 12);
+      mainSpotLight.castShadow = true;
+      mainSpotLight.shadow.mapSize.width = 1024;
+      mainSpotLight.shadow.mapSize.height = 1024;
+      scene.add(mainSpotLight);
 
-      const rimLight = new THREE.PointLight(0x6366f1, 1.1, 30);
-      rimLight.position.set(-10, 8, -8);
-      scene.add(rimLight);
+      trayRimLight = new THREE.PointLight(0x6366f1, 1.1, 30);
+      trayRimLight.position.set(-10, 8, -8);
+      scene.add(trayRimLight);
 
       buildFeltTray();
+      applyTrayTheme(appState.trayStyle === 'random' ? 'wood' : appState.trayStyle);
+
       setupControls(container);
       window.addEventListener('resize', onWindowResize);
       animateLoop();
     }
 
     function buildFeltTray() {
+      trayWalls = [];
       const trayFloorGeo = new THREE.PlaneGeometry(18, 13);
       const trayFloorMat = new THREE.MeshStandardMaterial({
-        color: 0x0f422e,
         roughness: 0.88,
         metalness: 0.05
       });
-      const trayFloor = new THREE.Mesh(trayFloorGeo, trayFloorMat);
-      trayFloor.rotation.x = -Math.PI / 2;
-      trayFloor.receiveShadow = true;
-      scene.add(trayFloor);
+      trayFloorMesh = new THREE.Mesh(trayFloorGeo, trayFloorMat);
+      trayFloorMesh.rotation.x = -Math.PI / 2;
+      trayFloorMesh.receiveShadow = true;
+      scene.add(trayFloorMesh);
 
       const rimMat = new THREE.MeshStandardMaterial({
         color: 0x381f13,
@@ -1045,21 +1490,25 @@
       topW.position.set(0, wallH / 2, -6.65);
       topW.castShadow = true;
       scene.add(topW);
+      trayWalls.push(topW);
 
-      const botW = new THREE.Mesh(new THREE.BoxGeometry(18.9, wallH, wallT), rimMat);
+      const botW = new THREE.Mesh(new THREE.BoxGeometry(18.9, wallH, wallT), rimMat.clone());
       botW.position.set(0, wallH / 2, 6.65);
       botW.castShadow = true;
       scene.add(botW);
+      trayWalls.push(botW);
 
-      const leftW = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, 13), rimMat);
+      const leftW = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, 13), rimMat.clone());
       leftW.position.set(-9.15, wallH / 2, 0);
       leftW.castShadow = true;
       scene.add(leftW);
+      trayWalls.push(leftW);
 
-      const rightW = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, 13), rimMat);
+      const rightW = new THREE.Mesh(new THREE.BoxGeometry(wallT, wallH, 13), rimMat.clone());
       rightW.position.set(9.15, wallH / 2, 0);
       rightW.castShadow = true;
       scene.add(rightW);
+      trayWalls.push(rightW);
     }
 
     function buildPolyGeometry(sides) {
@@ -1297,6 +1746,13 @@
       if (appState.isRolling) return;
       appState.isRolling = true;
       playFX('roll');
+
+      // Se la modalità tavolo è "Sempre Diverso (Casuale)", pesca un'ambientazione a sorpresa ad ogni lancio!
+      if (appState.trayStyle === 'random') {
+        const otherThemes = TRAY_STYLES.filter(t => t !== appState.activeRenderedTrayStyle);
+        const randomTheme = otherThemes[Math.floor(Math.random() * otherThemes.length)];
+        applyTrayTheme(randomTheme);
+      }
 
       updateActivePlayerUI();
       renderMultiplayerScoreboard();
